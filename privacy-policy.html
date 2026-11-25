@@ -16,18 +16,27 @@
 </head>
 <body>
 <h1>MeshLink Privacy Policy</h1>
-<p class="muted">App: MeshLink (com.clevora.meshlink) · Developer: Clevora Technologies · Last updated: 11 November 2026</p>
+<p class="muted">App: MeshLink (com.clevora.meshlink) · Developer: Clevora Technologies · Last updated: 25 November 2026</p>
 
-<p>MeshLink is built to work without servers. Your data stays on your phone and on the phones you choose to talk to. This policy explains what that means in practice.</p>
+<p>MeshLink works without servers: nearby phones talk to each other directly. When a contact is far away and you have internet, MeshLink can also deliver messages through the MeshLink relay, a small service we run on Cloudflare. Messages stay end-to-end encrypted either way. This policy explains what that means in practice.</p>
 
 <h2>What we collect</h2>
-<p>Nothing. MeshLink has no accounts, no analytics, no advertising and no crash-reporting service. We (the developer) do not run any server that receives your data, and we never see your messages, contacts, location or usage.</p>
+<p>MeshLink has no accounts, no analytics, no advertising and no crash-reporting service. We never see your messages, contacts, location or usage.</p>
+
+<h2>The internet relay</h2>
+<p>"Use the internet too" is on by default and can be turned off in Settings. While it is on and your phone has internet, MeshLink keeps a connection to the relay (hosted by Cloudflare, Inc.). When a message can't reach its recipient over the mesh, an encrypted copy goes to the relay, which keeps it only until the recipient's phone collects it, and for at most about 25 hours. Phones may also pass on encrypted messages they carry for others, so they arrive sooner.</p>
+<ul>
+  <li><strong>What the relay can see:</strong> your device ID (a fingerprint of your public key), the recipient's device ID, message IDs, when a message was sent, its size, and the IP address you connect from. Your phone proves it owns its device ID with a signature, so nobody else can collect your messages.</li>
+  <li><strong>What it can't see:</strong> the content of messages, photos, voice notes, or your display name. Everything is encrypted on your phone for the recipient only.</li>
+  <li>The relay keeps no logs of who talks to whom beyond the undelivered messages themselves. Cloudflare may keep short-lived technical logs (such as IP addresses) to run and protect its network.</li>
+  <li>"Everyone nearby" SOS alerts never go through the relay.</li>
+</ul>
 
 <h2>What other nearby MeshLink users can see</h2>
 <ul>
   <li><strong>Your display name and device ID</strong> (a fingerprint of your public key) are visible to MeshLink users on the mesh, so they can find and message you.</li>
   <li><strong>One-to-one messages, photos and videos</strong> are end-to-end encrypted. Only you and the person you're talking to can read them; phones that relay them cannot.</li>
-  <li><strong>The "Everyone nearby" room</strong> is not encrypted: anyone nearby running MeshLink can read messages posted there. The app shows this clearly in that room.</li>
+  <li><strong>SOS alerts</strong> in the "Everyone nearby" room are not encrypted, so anyone nearby running MeshLink can read them (that is how they reach help). Only SOS alerts can be sent there. Direct messages need the other person to accept your contact request first.</li>
 </ul>
 <p>Messages are stored only on the sending and receiving phones. Relaying phones may hold an encrypted copy for up to 24 hours to deliver it, then delete it.</p>
 
@@ -37,14 +46,17 @@
 <h2>Permissions</h2>
 <ul>
   <li><strong>Bluetooth, Nearby devices, Wi-Fi</strong>: to find and connect to nearby phones.</li>
-  <li><strong>Location</strong> (Android 12 and older, or when a phone's Nearby service requires it): Android requires it for Bluetooth/Wi-Fi scanning. MeshLink never reads or stores your location.</li>
-  <li><strong>Camera</strong> (optional): only to scan the QR code for internet sharing. No photos or videos are taken or saved.</li>
+  <li><strong>Location</strong> (Android 12 and older, or when a phone's Nearby service requires it): Android requires it for Bluetooth/Wi-Fi scanning. MeshLink reads your location only if you choose "Include my location" when sending an SOS alert: it is read once, at that moment, and sent inside the alert to nearby MeshLink users. It is never sent to us or anyone else, and never tracked in the background.</li>
+  <li><strong>Camera</strong> (optional): to scan the QR code for internet sharing, and during a video call while you have the camera on. Call video goes encrypted straight to the other phone and is never recorded or saved.</li>
+  <li><strong>Microphone</strong> (optional): while you record a voice message or are on a call. Voice messages are encrypted and sent like any other message; call audio goes encrypted straight to the other phone and is never recorded. Nothing is recorded in the background.</li>
   <li><strong>Notifications</strong>: to show new messages and that the mesh or sharing is running.</li>
+  <li><strong>Documents</strong>: only files you pick with the system file picker, to send them to one person.</li>
   <li><strong>Photos and videos</strong>: only the ones you pick with the system picker, to send them. Photos are re-encoded, which removes location and camera details.</li>
 </ul>
 
 <h2>Data retention and deletion</h2>
-<p>Your messages, media and identity keys are kept on your device until you delete them. Uninstalling MeshLink, or clearing its storage in Android Settings, deletes everything. Nothing is kept anywhere else. App data is excluded from cloud backups and device transfers.</p>
+<p>Your messages, media and identity keys are kept on your device until you delete them. Uninstalling MeshLink, or clearing its storage in Android Settings, deletes everything. Nothing else is kept anywhere else; the relay holds only undelivered encrypted messages, for at most about 25 hours. App data is excluded from cloud backups and device transfers.</p>
+<p><strong>Chat backups and exports.</strong> Only if you choose "Back up chats", MeshLink writes your chats (and, if you tick it, their photos, videos, voice messages and documents) to a file at the place you pick. The file is encrypted with a password you choose (AES-256, key derived with PBKDF2); it holds your contacts' public keys but never your own private keys. "Export chat" creates a plain-text copy of one chat and hands it to the app you pick in the share menu. Where these files go is up to you; they are never sent to us.</p>
 
 <h2>Children</h2>
 <p>MeshLink is not directed at children under 13.</p>
@@ -68,6 +80,7 @@
 <p>قریبی فون کا انٹرنیٹ استعمال کرتے وقت MeshLink ایک مقامی VPN شروع کرتا ہے جو آپ کا ٹریفک صرف آپ کے چنے ہوئے فون کو بھیجتا ہے۔ MeshLink اس ٹریفک کو نہ دیکھتا ہے، نہ ریکارڈ کرتا ہے، نہ بیچتا ہے۔</p>
 <h2>ڈیٹا مٹانا</h2>
 <p>MeshLink ان انسٹال کرنے یا اس کا اسٹوریج صاف کرنے سے سب کچھ مٹ جاتا ہے۔ کہیں اور کچھ محفوظ نہیں رہتا۔</p>
+<p>اگر آپ خود "چیٹس کا بیک اپ لیں" چنیں تو آپ کی چیٹس آپ کی چنی ہوئی جگہ پر ایک فائل میں محفوظ ہوتی ہیں، جو آپ کے پاس ورڈ سے خفیہ ہوتی ہے۔ اس میں آپ کی اپنی پرائیویٹ کیز نہیں ہوتیں۔ "چیٹ ایکسپورٹ کریں" ایک چیٹ کی سادہ ٹیکسٹ کاپی بناتا ہے۔ یہ فائلیں ہمیں کبھی نہیں بھیجی جاتیں۔</p>
 <h2>رابطہ</h2>
 <p><a href="mailto:abdur.rehman.mm6@gmail.com">abdur.rehman.mm6@gmail.com</a></p>
 </div>
